@@ -1,6 +1,6 @@
 # IndianaJS Demo Repository
 
-Install Node.JS, check out the demo you want and have fun:
+Install Node.JS, git clone the demo you want and have fun:
 
 `node index.js`
 
