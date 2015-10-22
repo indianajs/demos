@@ -139,7 +139,7 @@ function initRadar(divSelector, items) {
       // generatePattern(svg, 100, img, key+'patternFull');
     }
     var item = svg.append("svg:a")
-      .attr("xlink:href", "#xzx")
+      .attr("xlink:href", "#" + key)
         .attr("id", key+"radar");
 
         item.append("svg:image")

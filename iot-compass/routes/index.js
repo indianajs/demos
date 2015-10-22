@@ -25,9 +25,36 @@ router.get('/livinglab', function(req, res) {
 router.get('/livinglab2DM', function(req, res) {
   res.render('livinglab2DM');
 });
+
+router.get('/iot2015', function(req, res) {
+  res.render('iot2015');
+});
 // router.get('/livinglab.html', function(req, res) {
 //   res.render('livinglab2DM');
 // });
+
+router.get('/iot2015/items', function(req, res) {
+	res.json( {
+	  "hue1": {
+	    location: {dir: 80},
+	    img: "img/hue.png",
+	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
+	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	  },
+	  "hue2": {
+	    location: {dir: 180},
+	    img: "img/hue.png",
+	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
+	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	  },
+	"hue3": {
+	    location: {dir: 100},
+	    img: "img/hue.png",
+	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
+	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	  }
+	});
+});
 
 router.get('/livinglab/items', function(req, res) {
 	var livinglab_items = {

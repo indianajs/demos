@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
 }); 
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '../indiana-js')));
+app.use(express.static(path.join(__dirname, '../../indiana-js')));
 
 
 app.use('/', routes);
