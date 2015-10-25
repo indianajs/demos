@@ -47,28 +47,25 @@ var hueuser = "newdeveloper"
 router.get('/iot2015/items', function(req, res) {
 	res.json( {
 	  "laptop": {
-	    location: {dir: 80},
+	    location: {dir: 0},
 	    img: "img/laptop.jpg",
-	    hueid: "1",
-	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
 	  },
-	  "stocklamp": {
+	  "stockIndicator": {
 	    location: {dir: 180},
 	    img: "img/lamp.png",
-	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
-	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	  	hueid: "1",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
 	  },
 	"flower": {
 	    location: {dir: 100},
-	    img: "img/flower2.jpg",
-	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
-	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	    img: "img/flower2.jpg"
 	  },
 	  "plantLifeSignal": {
 	    location: {dir: 160},
 	    img: "img/lifesignal.png",
-	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
-	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	    status: "danger",
+	    hueid: "2",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
 	  }
 	});
 });

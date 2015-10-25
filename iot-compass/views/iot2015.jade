@@ -59,13 +59,14 @@ body.container-fluid
                     span#mini_radar_icon.glyphicon.glyphicon-dashboard
                     img#mini_radar_selection
     section#pagecontent(vocab='http://schema.org/', role='main').page-section.home
-    div#plantLifeSignal(typeof='Product')
-        h2(property='name') Lenovo Laptop
-        span(property='label', content='Plant Life Signal Light')
-        <img src="img/laptop.png" alt='Plant Life Signal Light' />
-        span#plantStatus(property='description')
-            | Your plant needs some water.
-        p#plantLifeSignalPosition
+      div#laptop(typeof='Product')
+        <img src="img/laptop.jpg" alt='Plant Life Signal Light' />
+        div.description
+          h2(property='name') Lenovo Laptop
+          span(property='label', content='Laptop')
+          span#laptopStatus(property='description')
+            | Notification from Microsoft: The work laptop needs an important update!
+          p#laptopPosition
 
         div.br_to_lengthenpage
           br
@@ -74,12 +75,17 @@ body.container-fluid
           br
 
       div#plantLifeSignal(typeof='Product')
-        h2(property='name') Plant Life Signal
-        span(property='label', content='Plant Life Signal Light')
         <img src="img/lifesignal.png" alt='Plant Life Signal Light' />
-        span#plantStatus(property='description')
-            | Your plant needs some water.
-        p#plantLifeSignalPosition
+        div.description
+          h2(property='name') Plant Life Signal
+          span(property='label', content='Plant Life Signal Light')
+          span#plantStatus(property='description')
+              | Your plant needs some water.
+          div#lampControls
+              div.btn-group.button-color
+                  label.btn.btn-success(href='#', onclick="waterThePlant('plantLifeSignal')") Add water
+                      input(name="color",itemue="btn btn-default",type="radio")
+          p#plantLifeSignalPosition
 
         div.br_to_lengthenpage
           br
@@ -87,45 +93,47 @@ body.container-fluid
           br
           br
 
-        div#flower(typeof='Product')
-          h2(property='name') Blume
-          |         
-          img(height='120', width='120', src='img/flower.jpg', alt='rote Blume')
+      div#flower(typeof='Product')
+        img(src='img/flower.jpg', alt='green Blume')
+        div.description   
+          h2(property='name') Office Flower     
           br
-          |         Eine tolle 
-          span(property='color') rot
-          | e Blume.
-          |         Man sollte die Blume alle 
-          span(property='watering') 2
-          | Tage gießen.
+          | The wonderful 
+          span(property='color') green 
+          | office flower.
+          | You absolutely need to water it every
+          span(property='days') 2
+          | days
           br
           span Current Plant humidity 67%. 
-          img.small(src="img/flower_happy.png", height="50px")   
+          img.small(src="img/flower_happy.png", height="20px")   
           p#flowerPosition
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
 
-        div#stocklamp(typeof='Product')
+      div.br_to_lengthenpage
+        br
+        br
+        br
+        br
+
+      div#stockIndicator(typeof='Product')
+        img(src='img/lamp.png' alt="Stock Indicator")
+        div.description
           h2(property='name') Lampe
           |         
-          img(height='130', width='110', src='img/lamp.png')
           br
-          |         Ein Lampe die ihre Farbe wechselt, wenn sie Geräusche hört!
+          | The curren VW Stock is: 
           div#lampControls
             div(data-toggle="buttons").btn-group.button-color
-                label.btn.btn-success(href='#', onclick="on('hue1')") ON
-                    input(name="color",itemue="btn btn-default",type="radio" onclick="on('hue1')")
-                label.btn.btn-warning(href='#', onclick="off('hue1')") OFF
-                    input(name="color",itemue="btn btn-default",type="radio" onclick="off('hue1')")
-          p#lampPosition
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
+                label.btn.btn-success(href='#', onclick="on('stockIndicator')") BUY
+                    input(name="color",itemue="btn btn-default",type="radio")
+                label.btn.btn-warning(href='#', onclick="off('stockIndicator')") SELL
+                    input(name="color",itemue="btn btn-default",type="radio")
+          p#stockIndicatorPosition
+      div.br_to_lengthenpage
+        br
+        br
+        br
+        br
 
         //- div#orchid(typeof='Product')
         //-   h2(property='name') Kühlschrank

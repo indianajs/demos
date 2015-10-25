@@ -116,6 +116,12 @@ function initRadar(divSelector, items) {
     if(val.status != undefined && !val.status) {
       color = "red";
     }
+    if(val.status == "danger")
+      color = "red";
+    if(val.status == "warning")
+      color = "yellow";
+    if(val.status == "ok")
+      color = "green";
     /* better performance (in chrome usable), no image borders, images not round */
     // var w = itemradius*2;
     // svg.append("svg:a")
@@ -271,7 +277,7 @@ function initListeners() {
 
     $('#mini_radar_icon').hide();
     $('#mini_radar_selection').show();
-    $('#mini_radar_selection').attr('src', 'img/' + item.key + '.png');
+    $('#mini_radar_selection').attr('src', ''+item.value.img);
     var button = d3.select('#radarButton');
     button.attr("xlink:href", "#"+item.key);
 
@@ -317,11 +323,18 @@ function getIndianaData() {
     $("#radardiv").show();
     initRadar('#radardiv', items);
     initListeners();
+    initScenarioSimulations(items);
     setInterval(function() {
       applyLocationTextChildren(items);
     }, 500)
   });
 }
+
+function initScenarioSimulations(items){
+    //demo scenario simulation
+    simulateplant(items.plantLifeSignal);
+}
+
 function resetIndianaOrientation() {
   indiana.resetOrientation();
 }
@@ -386,6 +399,31 @@ function off(id){
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
 }
 
+simulatePlant = false;
+
+function waterThePlant(id){
+  var item = items[id];
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true}', "json");
+
+}
+
+
+  //timeout make hue get red in x seconds
+  // do only once !!!!
+function simulateplant(item){
+  
+  setInterval(function() {
+    //should check is status of light ist already off
+    // should be gradient anyways
+    ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
+  }
+  ,4000);
+};
+
+function simulateStock(){
+
+}
+
 // tried a fix for users who move their phone into landscape mode
 // window.addEventListener('orientationchange', function ()
 // {
@@ -427,6 +465,7 @@ $(document).ready(function() {
   // initDeviceMotion();
     // if(hasGetUserMedia()) readqrcode();
     // else console.log("Browser doesn't support video capture.")
+
 });
 function initDeviceMotion() {
 

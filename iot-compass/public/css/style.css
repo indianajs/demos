@@ -46,9 +46,25 @@ h2{
     min-height: 0px;
 }
 
-img{
-    height: 100px;
-    width: auto;
+#mini_radar_selection{
+/*     height: auto; */
+/*     width: 30%; */
+    border-radius: 20px;
+}
+
+#pagecontent>div{
+    display: flex;
+}
+
+#pagecontent img{
+    width: 30%;
+    height: 30%;
+    border-radius: 20px;
+}
+
+div.description {
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 .fixed{
@@ -58,8 +74,9 @@ img{
     transform: translateY(0px);
 }
 
-img.small{
-    height: 50px;
+.small{
+    height: 30px !important;
+    width: auto !important;
 }
 
 .headroom {
