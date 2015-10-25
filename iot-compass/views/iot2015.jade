@@ -8,7 +8,7 @@ html
     
     link(rel='stylesheet', href='css/bootstrap.min.css')
     link(rel='stylesheet', href='css/bootstrap-theme.min.css')
-    link(rel='stylesheet', href='startbootstrap-scrolling-nav-1.0.3/css/scrolling-nav.css')
+    link(rel='stylesheet', href='js/startbootstrap-scrolling-nav-1.0.3/css/scrolling-nav.css')
     link(rel='stylesheet', href='css/style.css')
 
     //- use browserify
@@ -16,11 +16,12 @@ html
 
     script(src='js/jquery.js')
     script(src='js/bootstrap.min.js')
-    script(src='startbootstrap-scrolling-nav-1.0.3/js/jquery.easing.min.js')
-    script(src='startbootstrap-scrolling-nav-1.0.3/js/scrolling-nav.js')
-    script(src='http://d3js.org/d3.v3.min.js')
+    script(src='js/startbootstrap-scrolling-nav-1.0.3/js/jquery.easing.min.js')
+    script(src='js/startbootstrap-scrolling-nav-1.0.3/js/scrolling-nav.js')
+    script(src='js/d3.v3.min.js')
     script(src='html5-qrcode-master/lib/jsqrcode-combined.min.js')
     script(src='html5-qrcode-master/lib/html5-qrcode.min.js')
+    //- IndianaJS is imported from the main project folder linked statically in app.js
     script(src='indiana.js')
     script(src='js/radar.js')
     script(src='js/headroom.min.js')
@@ -58,39 +59,34 @@ body.container-fluid
                     span#mini_radar_icon.glyphicon.glyphicon-dashboard
                     img#mini_radar_selection
     section#pagecontent(vocab='http://schema.org/', role='main').page-section.home
-        div#microwave(typeof='Product')
-          h2(property='name') Kenmore White 17&quot; Microwave
-          span(property='label', content='Mikrowelle')
-          <img src="img/microwave.png" alt='Kenmore 17" Microwave' />
-          div(property='aggregateRating', typeof='AggregateRating')
-            | Rated 
-            span(property='ratingitemue') 3.5/5 
-            | based on
-            span(property='reviewCount') 11
-            | customer reviews
-          div(property='offers', typeof='Offer')
-            | Cost:
-            span(property='priceCurrency', content='USD') $
-            span(property='price', content='1000.00') 1,000.00
-            |           
-            br
-            |         Availability:
-            |         
-            link(property='availability', href='http://schema.org/InStock')
-            | In stock
-            | Product description:
-            |       
-          span(property='description')
-            | 0.7 cubic feet countertop microwave.
-            | Has six preset cooking categories and convenience features like
-            | Add-A-Minute and Child Lock.
-            |     
-          p#microwavePosition
+    div#plantLifeSignal(typeof='Product')
+        h2(property='name') Lenovo Laptop
+        span(property='label', content='Plant Life Signal Light')
+        <img src="img/laptop.png" alt='Plant Life Signal Light' />
+        span#plantStatus(property='description')
+            | Your plant needs some water.
+        p#plantLifeSignalPosition
+
         div.br_to_lengthenpage
           br
           br
           br
           br
+
+      div#plantLifeSignal(typeof='Product')
+        h2(property='name') Plant Life Signal
+        span(property='label', content='Plant Life Signal Light')
+        <img src="img/lifesignal.png" alt='Plant Life Signal Light' />
+        span#plantStatus(property='description')
+            | Your plant needs some water.
+        p#plantLifeSignalPosition
+
+        div.br_to_lengthenpage
+          br
+          br
+          br
+          br
+
         div#flower(typeof='Product')
           h2(property='name') Blume
           |         
@@ -111,7 +107,8 @@ body.container-fluid
           br
           br
           br
-        div#lamp(typeof='Product')
+
+        div#stocklamp(typeof='Product')
           h2(property='name') Lampe
           |         
           img(height='130', width='110', src='img/lamp.png')
@@ -119,40 +116,29 @@ body.container-fluid
           |         Ein Lampe die ihre Farbe wechselt, wenn sie Geräusche hört!
           div#lampControls
             div(data-toggle="buttons").btn-group.button-color
-                label.btn.btn-success(href='#') ON
-                    input(name="color",itemue="btn btn-default",type="radio")
-                label.btn.btn-warning(href='#') OFF
-                    input(name="color",itemue="btn btn-default",type="radio")
+                label.btn.btn-success(href='#', onclick="on('hue1')") ON
+                    input(name="color",itemue="btn btn-default",type="radio" onclick="on('hue1')")
+                label.btn.btn-warning(href='#', onclick="off('hue1')") OFF
+                    input(name="color",itemue="btn btn-default",type="radio" onclick="off('hue1')")
           p#lampPosition
         div.br_to_lengthenpage
           br
           br
           br
           br
-        div#fridge(typeof='Product')
-          h2(property='name') Kühlschrank
-          |         
-          img(height='130', width='110', src='img/fridge.jpg')
-          br
-          |        Behälter für große Köstlichkeiten. Nicht vergessen, Milch kostet 20¢ !
-          p#fridgePosition
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
-        div#coffeemachine(typeof='Product')
-          h2(property='name') Kaffeemaschine
-          |         
-          img(height='130', width='110', src='img/coffeemachine.jpg')
-          br
-          |         Der beste Kaffee der Welt hier am TECO.
-          p#coffeemachinePosition
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
+
+        //- div#orchid(typeof='Product')
+        //-   h2(property='name') Kühlschrank
+        //-   |         
+        //-   img(height='130', width='110', src='img/orchid.jpg')
+        //-   br
+        //-   |        Behälter für große Köstlichkeiten. Nicht vergessen, Milch kostet 20¢ !
+        //-   p#orchidPosition
+        //- div.br_to_lengthenpage
+        //-   br
+        //-   br
+        //-   br
+        //-   br
 
     script.
         //- supportsVibrate = "vibrate" in navigator;

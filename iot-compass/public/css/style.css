@@ -5,7 +5,7 @@ body {
 }
 
 html{
-    background-image: url('img/iot2015_logo_brighter.png');
+    /*background-image: url('../img/iot2015_logo_brighter.png');*/
     padding: 0;
     margin: 0;
 }

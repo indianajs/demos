@@ -236,12 +236,14 @@ function readqrcode() {
   qrcodeactive = !qrcodeactive;
 }
 
+var items;
+
 function initListeners() {
   document.addEventListener('deviceorientation2', function(data) {
     // $("#qrcodedivdata").html(Math.round(Orientation.detail.dir));
     // console.log("deviceorientation", data)
     var dir = data.detail.orientation.dir;
-    var items = data.detail.items;
+    items = data.detail.items;
     updatePositions(items, dir);
   })
   var valURIold;
@@ -368,6 +370,52 @@ function createLocationText(id, thing, location, no_of){
       $(id+"Position").html("<strong>The "+thing+" is "+location+of+" you.</strong>");
     // }
 }
+
+// if(item.restAPI)
+// ajaxCall("POST", item.restAPI, '{"on":true}', "json");
+
+function on(id){
+  //assume hue
+  var item = items[id];
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true}', "json");
+}
+
+function off(id){
+  //assume hue
+  var item = items[id];
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
+}
+
+// tried a fix for users who move their phone into landscape mode
+// window.addEventListener('orientationchange', function ()
+// {
+//     if (window.innerHeight > window.innerWidth)
+//     {
+//         document.getElementsByTagName('body').style.transform = "rotate(90deg)";
+//     }
+// });
+
+
+function ajaxCall(method, url, payload, type){
+  var menuId = $( "ul.nav" ).first().attr( "id" );
+  var request = $.ajax({
+    url: url,
+    method: method,
+    data: payload,
+    dataType: type
+  });
+   
+  request.done(function( msg ) {
+//     alert( "Request done: " + JSON.stringify(msg) );
+    console.log(JSON.stringify(msg));
+//     $( "#log" ).html( msg );
+  });
+   
+  request.fail(function( jqXHR, textStatus ) {
+    alert( "Request failed: " + textStatus );
+  });
+}
+
 
 $(document).ready(function() {
   $("#radardiv").hide();

@@ -33,23 +33,40 @@ router.get('/iot2015', function(req, res) {
 //   res.render('livinglab2DM');
 // });
 
+// hue user: 1d004c62883d0d72b77af7e9fd46e3
+// {"devicetype":"indiana#mobile teco"}
+
+// var bridgeip = "http://192.168.1.133";
+var bridgeip = "http://129.13.169.230:8000";
+
+// Teco Hue Bridge User
+// var hueuser = "1d004c62883d0d72b77af7e9fd46e3";
+var hueuser = "newdeveloper"
+
+
 router.get('/iot2015/items', function(req, res) {
 	res.json( {
-	  "hue1": {
+	  "laptop": {
 	    location: {dir: 80},
-	    img: "img/hue.png",
-	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
-	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	    img: "img/laptop.jpg",
+	    hueid: "1",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
 	  },
-	  "hue2": {
+	  "stocklamp": {
 	    location: {dir: 180},
-	    img: "img/hue.png",
+	    img: "img/lamp.png",
 	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
 	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
 	  },
-	"hue3": {
+	"flower": {
 	    location: {dir: 100},
-	    img: "img/hue.png",
+	    img: "img/flower2.jpg",
+	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
+	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
+	  },
+	  "plantLifeSignal": {
+	    location: {dir: 160},
+	    img: "img/lifesignal.png",
 	    controlON: "http://cumulus.teco.edu:81/21345gjphtnch87/ON",
 	    controlOFF: "http://cumulus.teco.edu:81/21345gjphtnch87/OFF"
 	  }
