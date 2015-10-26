@@ -82,7 +82,7 @@ body.container-fluid
               | till
           span Current Plant humidity 67%. 
           div.btn-group.button-color
-              label.btn.btn-success(href='#', onclick="waterThePlant('lamp2')") Add water
+            button.btn.btn-success(href='#', onclick="waterThePlant('lamp2')") Add water
           p#flowerPosition
 
       hr
@@ -95,12 +95,9 @@ body.container-fluid
            span(property='label', content='Plant Life Signal Light')
            span#plantStatus(property='description')
                | The red color indicates that your plant (TODO: to your X) needs immediate attention 
-            div(data-toggle="buttons").btn-group.button-color
-               label.btn.btn-success(href='#', onclick="on('stockIndicator')") on
-                    input(name="color",itemue="btn btn-default",type="radio")
-               label.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
-                    input(name="color",itemue="btn btn-default",type="radio")
-               
+            div.btn-group.button-color
+               button.btn.btn-success(href='#', onclick="on('stockIndicator')") on
+               button.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
            p#lamp2Position
 
       hr
@@ -114,17 +111,14 @@ body.container-fluid
           br
           | The lamp is currently in daylight mode 
           div#lampControls
-            div(data-toggle="buttons").btn-group.button-color
-                label.btn.btn-success(href='#', onclick="on('lamp1')") night
-                    input(name="color",itemue="btn btn-default",type="radio")
-                label.btn.btn-warning(href='#', onclick="off('lamp1')") day
-                    input(name="color",itemue="btn btn-default",type="radio")
+            //- div(data-toggle="buttons").btn-group.button-color
+            div.btn-group.button-color
+                button.btn.btn-success(href='#', onclick="on('lamp1')") night
+                button.btn.btn-warning(href='#', onclick="off('lamp1')") day
             br
-            div(data-toggle="buttons").btn-group.button-color
-                label.btn.btn-success(href='#', onclick="on('stockIndicator')") on
-                    input(name="color",itemue="btn btn-default",type="radio")
-                label.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
-                    input(name="color",itemue="btn btn-default",type="radio")
+            div.btn-group.button-color
+                button.btn.btn-success(href='#', onclick="on('stockIndicator')") on
+                button.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
           p#lamp1Position
 
       hr
