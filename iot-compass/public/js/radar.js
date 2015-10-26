@@ -398,6 +398,18 @@ function off(id){
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
 }
 
+function daymode(id){
+  //assume hue
+  var item = items[id];
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":254}', "json");
+}
+
+function nightmode(id){
+  //assume hue
+  var item = items[id];
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":50}', "json");
+}
+
 simulatePlant = false;
 
 function waterThePlant(id){
@@ -476,6 +488,8 @@ function initvisuals(){
       top: function(){return $('#radar').outerHeight(true)}
     }
   });
+
+  
 }
 
 function initDeviceMotion() {

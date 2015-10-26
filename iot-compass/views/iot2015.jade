@@ -75,14 +75,17 @@ body.container-fluid
           img(src='img/flower2.jpg', alt='green Blume')
         div.description.col-xs-12.col-sm-6
           h2(property='name') Carex Grass     
-          a(href="https://en.wikipedia.org/wiki/Carex") (see also wikipedia )
-          span.postit
+          a(href="https://en.wikipedia.org/wiki/Carex") Carex Grass on Wikipedia
+          br
+          p.postit
               | Don't forget to water my grass about once a week while I am away. 
               | Thanks
               | till
-          span Current Plant humidity 67%. 
+          br
+          p Current Plant humidity 67%. 
           div.btn-group.button-color
-            button.btn.btn-success(href='#', onclick="waterThePlant('lamp2')") Add water
+            button.btn.btn-info(href='#', onclick="waterThePlant('lamp2')") Add water 
+              span.glyphicon.glyphicon-tint
           p#flowerPosition
 
       hr
@@ -91,14 +94,21 @@ body.container-fluid
         div.col-xs-12.col-sm-6
           img(src="img/lamp.png",alt='Plant Life Signal Light')
         div.description.col-xs-12.col-sm-6
-           h2(property='name') Desk Lamp
-           span(property='label', content='Plant Life Signal Light')
-           span#plantStatus(property='description')
-               | The red color indicates that your plant (TODO: to your X) needs immediate attention 
-            div.btn-group.button-color
-               button.btn.btn-success(href='#', onclick="on('stockIndicator')") on
-               button.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
-           p#lamp2Position
+          h2(property='name') Desk Lamp
+          span(property='label', content='Plant Life Signal Light')
+          br
+          p.postit.smallred
+              | Keep an eye on this, will you?
+              br
+              span Till
+          br
+          p#plantStatus(property='description')
+             | The red color indicates that your plant (TODO: to your X) needs immediate attention 
+          div#lampControls
+            div.button-color
+               button.btn.btn-success(href='#', onclick="on('lamp2')") ON
+               button.btn.btn-danger(href='#', onclick="off('lamp2')") OFF
+          p#lamp2Position
 
       hr
 
@@ -107,18 +117,16 @@ body.container-fluid
           img(src='img/lamp.png' alt="Stock Indicator")
         div.description.col-xs-12.col-sm-6
           h2(property='name') Lamp
-          |         
-          br
-          | The lamp is currently in daylight mode 
+          p The lamp is currently in daylight mode 
           div#lampControls
             //- div(data-toggle="buttons").btn-group.button-color
-            div.btn-group.button-color
-                button.btn.btn-success(href='#', onclick="on('lamp1')") night
-                button.btn.btn-warning(href='#', onclick="off('lamp1')") day
+            div.button-color
+                button.btn.btn-day(href='#', onclick="daymode('lamp1')") Day
+                button.btn.btn-night(href='#', onclick="nightmode('lamp1')") Night
             br
-            div.btn-group.button-color
-                button.btn.btn-success(href='#', onclick="on('stockIndicator')") on
-                button.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
+            div.button-color
+                button.btn.btn-success(href='#', onclick="on('lamp1')") ON
+                button.btn.btn-danger(href='#', onclick="off('lamp1')") OFF
           p#lamp1Position
 
       hr
@@ -128,9 +136,14 @@ body.container-fluid
           img(src="img/laptop.jpg", alt='Plant Life Signal Light')
         div.description.col-xs-12.col-sm-6
           h2(property='name') Lenovo X250 Laptop
-          a(href="http://thinkwiki.de/X250") X250 on Thinkwiki 
-          span(property='label', content='Laptop')
-          span#laptopStatus(property='description')
+          a(href="http://thinkwiki.de/X250") X250 on Thinkwiki
+          p(property='label', content='Laptop')
+          p.postit.postitgreen
+              | You should rather get a Mac!
+              br
+              span ;-) Steve
+          br
+          p#laptopStatus(property='description')
             | Notification from Microsoft: The work laptop needs an important update!
           p#laptopPosition
 
@@ -138,9 +151,27 @@ body.container-fluid
         //- supportsVibrate = "vibrate" in navigator;
         //- console.log('This device supports vibration: '+ supportsVibrate);
         //- alert(supportsVibrate);
+        var intialisation = true;
         $(document).ready(function(){
             // grab an element
+            if (window.DeviceOrientationEvent) {
 
+             window.addEventListener('deviceorientation', function(eventData) {
+                if(intialisation){
+                  // alpha is the compass direction the device is facing in degrees
+                  var dir = eventData.alpha;
+
+                  if(dir != null || true){
+                    console.log("Device says it supports DeviceOrientationEvent but does not. Not starting compass.")
+                    document.getElementById('explorerheader').style.display = 'block';
+                    document.getElementById('radar').style.display = 'block';
+                    document.getElementById('overviewbar').style.display = 'block';                    
+                  }
+                  intialisation = false;
+                }
+                
+              }, false);
+            }
 
             //- init();
             //- resetOrientation();
