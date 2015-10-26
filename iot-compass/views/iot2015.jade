@@ -10,6 +10,7 @@ html(lang='en')
     link(rel='stylesheet', href='css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='js/startbootstrap-scrolling-nav-1.0.3/css/scrolling-nav.css')
     link(rel='stylesheet', href='css/style.css')
+    link(href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css')
 
     //- use browserify
     //- script(src='js/bundle.js')
@@ -19,8 +20,8 @@ html(lang='en')
     script(src='js/startbootstrap-scrolling-nav-1.0.3/js/jquery.easing.min.js')
     script(src='js/startbootstrap-scrolling-nav-1.0.3/js/scrolling-nav.js')
     script(src='js/d3.v3.min.js')
-    script(src='html5-qrcode-master/lib/jsqrcode-combined.min.js')
-    script(src='html5-qrcode-master/lib/html5-qrcode.min.js')
+    script(src='js/jsqrcode-combined.min.js')
+    script(src='js/html5-qrcode.min.js')
     //- IndianaJS is imported from the main project folder linked statically in app.js
     script(src='indiana.js')
     script(src='js/radar.js')
@@ -66,83 +67,66 @@ body.container-fluid
     //- Content
     section#pagecontent(vocab='http://schema.org/', role='main').page-section.home
 
+      h1 Till's demo desk
+        |Simple demo of a simple static website extended uses indiana.js with a compass widget   
+            
+      div#flower.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src='img/flower2.jpg', alt='green Blume')
+        div.description.col-xs-6
+          h2(property='name') Carex Grass     
+          a(href="https://en.wikipedia.org/wiki/Carex") (see also wikipedia )
+          span.postit
+              | Don't forget to water my grass about once a week while I am away. 
+              | Thanks
+              | till
+          span Current Plant humidity 67%. 
+          div.btn-group.button-color
+              label.btn.btn-success(href='#', onclick="waterThePlant('plantLifeSignal')") Add water
+          p#flowerPosition
+
+      hr
+
+      div#lamp2.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src="img/lamp.png",alt='Plant Life Signal Light')
+        div.description.col-xs-6
+           h2(property='name') Plant Life Signal
+           span(property='label', content='Plant Life Signal Light')
+           span#plantStatus(property='description')
+               | Your plant needs some water.
+           p#plantLifeSignalPosition
+
+      hr
+
+      div#lamp1.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src='img/lamp.png' alt="Stock Indicator")
+        div.description.col-xs-6
+          h2(property='name') Lamp
+          |         
+          br
+          | The lamp is currently in daylight mode 
+          div#lampControls
+            div(data-toggle="buttons").btn-group.button-color
+                label.btn.btn-success(href='#', onclick="on('stockIndicator')") night
+                    input(name="color",itemue="btn btn-default",type="radio")
+                label.btn.btn-warning(href='#', onclick="off('stockIndicator')") day
+                    input(name="color",itemue="btn btn-default",type="radio")
+          p#stockIndicatorPosition
+
+      hr
+
       div#laptop.thing.row(typeof='Product')
         div.col-xs-6
           img(src="img/laptop.jpg", alt='Plant Life Signal Light')
         div.description.col-xs-6
-          h2(property='name') Lenovo Laptop
+          h2(property='name') Lenovo X250 Laptop
+          a(href="http://thinkwiki.de/X250") X250 on Thinkwiki 
           span(property='label', content='Laptop')
           span#laptopStatus(property='description')
             | Notification from Microsoft: The work laptop needs an important update!
           p#laptopPosition
-
-      hr
-
-      div#plantLifeSignal.thing.row(typeof='Product')
-        div.col-xs-6
-          img(src="img/lifesignal.png", alt='Plant Life Signal Light')
-        div.description.col-xs-6
-          h2(property='name') Plant Life Signal
-          span(property='label', content='Plant Life Signal Light')
-          span#plantStatus(property='description')
-              | Your plant needs some water.
-          div#lampControls
-              div.btn-group.button-color
-                  label.btn.btn-success(href='#', onclick="waterThePlant('plantLifeSignal')") Add water
-                      input(name="color",itemue="btn btn-default",type="radio")
-          p#plantLifeSignalPosition
-
-      hr
-
-      div#flower.thing.row(typeof='Product')
-        div.col-xs-6
-          img(src='img/flower.jpg', alt='green Blume')
-        div.description.col-xs-6
-          h2(property='name') Office Flower     
-          br
-          | The wonderful 
-          span(property='color') green 
-          | office flower.
-          | You absolutely need to water it every
-          span(property='days') 2
-          | days
-          br
-          span Current Plant humidity 67%. 
-          img.small(src="img/flower_happy.png", height="20px")   
-          p#flowerPosition
-      
-      hr
-
-      div#stockIndicator.thing.row(typeof='Product')
-        div.col-xs-6
-          img(src='img/lamp.png' alt="Stock Indicator")
-        div.description.col-xs-6
-          h2(property='name') Stock Indicator
-          |         
-          br
-          | Currently looking at the 
-          strong(property='stockname') VW 
-          | stock : 
-          div#lampControls
-            div(data-toggle="buttons").btn-group.button-color
-                label.btn.btn-success(href='#', onclick="on('stockIndicator')") BUY
-                    input(name="color",itemue="btn btn-default",type="radio")
-                label.btn.btn-warning(href='#', onclick="off('stockIndicator')") SELL
-                    input(name="color",itemue="btn btn-default",type="radio")
-          p#stockIndicatorPosition
-
-        //- div#orchid(typeof='Product')
-        //-   h2(property='name') Kühlschrank
-        //-   |         
-        //-   img(height='130', width='110', src='img/orchid.jpg')
-        //-   br
-        //-   |        Behälter für große Köstlichkeiten. Nicht vergessen, Milch kostet 20¢ !
-        //-   p#orchidPosition
-        //- div.br_to_lengthenpage
-        //-   br
-        //-   br
-        //-   br
-        //-   br
 
     script.
         //- supportsVibrate = "vibrate" in navigator;

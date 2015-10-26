@@ -449,8 +449,7 @@ function ajaxCall(method, url, payload, type){
   });
    
   request.fail(function( jqXHR, textStatus ) {
-    console.log(JSON.stringify(textStatus));
-    // alert( "Request failed: " + textStatus );
+    console.log( "Request failed: " + textStatus );
   });
 }
 
