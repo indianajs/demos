@@ -36,8 +36,8 @@ router.get('/iot2015', function(req, res) {
 // hue user: 1d004c62883d0d72b77af7e9fd46e3
 // {"devicetype":"indiana#mobile teco"}
 
-// var bridgeip = "http://192.168.1.133";
-var bridgeip = "http://129.13.169.230:8000";
+var bridgeip = "http://192.168.1.100";
+//var bridgeip = "http://129.13.169.230:8000";
 
 // Teco Hue Bridge User
 // var hueuser = "1d004c62883d0d72b77af7e9fd46e3";

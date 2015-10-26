@@ -82,7 +82,7 @@ body.container-fluid
               | till
           span Current Plant humidity 67%. 
           div.btn-group.button-color
-              label.btn.btn-success(href='#', onclick="waterThePlant('plantLifeSignal')") Add water
+              label.btn.btn-success(href='#', onclick="waterThePlant('lamp2')") Add water
           p#flowerPosition
 
       hr
@@ -91,10 +91,16 @@ body.container-fluid
         div.col-xs-12.col-sm-6
           img(src="img/lamp.png",alt='Plant Life Signal Light')
         div.description.col-xs-12.col-sm-6
-           h2(property='name') Plant Life Signal
+           h2(property='name') Desk Lamp
            span(property='label', content='Plant Life Signal Light')
            span#plantStatus(property='description')
-               | Your plant needs some water.
+               | The red color indicates that your plant (TODO: to your X) needs immediate attention 
+            div(data-toggle="buttons").btn-group.button-color
+               label.btn.btn-success(href='#', onclick="on('stockIndicator')") on
+                    input(name="color",itemue="btn btn-default",type="radio")
+               label.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
+                    input(name="color",itemue="btn btn-default",type="radio")
+               
            p#plantLifeSignalPosition
 
       hr
@@ -112,6 +118,12 @@ body.container-fluid
                 label.btn.btn-success(href='#', onclick="on('stockIndicator')") night
                     input(name="color",itemue="btn btn-default",type="radio")
                 label.btn.btn-warning(href='#', onclick="off('stockIndicator')") day
+                    input(name="color",itemue="btn btn-default",type="radio")
+            br
+            div(data-toggle="buttons").btn-group.button-color
+                label.btn.btn-success(href='#', onclick="on('stockIndicator')") on
+                    input(name="color",itemue="btn btn-default",type="radio")
+                label.btn.btn-warning(href='#', onclick="off('stockIndicator')") off
                     input(name="color",itemue="btn btn-default",type="radio")
           p#stockIndicatorPosition
 
