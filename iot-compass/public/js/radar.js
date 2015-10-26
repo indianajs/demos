@@ -350,14 +350,14 @@ function applyLocationTextChildren(registeredThings){
     // console.log(location)
     // if (!$(id+"Position")) $(id).append('<p id="'+id+'Position"></p>');
     switch(location) {
-      case 'N': createLocationText(id, key, 'in front'); break;
-      case 'NW': createLocationText(id, key, 'in front and to the left'); break;
-      case 'NE': createLocationText(id, key, 'in front and to the right'); break;
-      case 'SW': createLocationText(id, key, 'behind to the left'); break;
-      case 'EW': createLocationText(id, key, 'behind to the right'); break;
-      case 'S': createLocationText(id, key, 'behind', true); break;
-      case 'E': createLocationText(id, key, 'right'); break;
-      case 'W': createLocationText(id, key, 'left'); break;
+      case 'N': createLocationText(id, value, 'in front'); break;
+      case 'NW': createLocationText(id, value, 'in front and to the left'); break;
+      case 'NE': createLocationText(id, value, 'in front and to the right'); break;
+      case 'SW': createLocationText(id, value, 'behind to the left'); break;
+      case 'EW': createLocationText(id, value, 'behind to the right'); break;
+      case 'S': createLocationText(id, value, 'behind', true); break;
+      case 'E': createLocationText(id, value, 'right'); break;
+      case 'W': createLocationText(id, value, 'left'); break;
     }
   })
 }
@@ -379,7 +379,7 @@ function createLocationText(id, thing, location, no_of){
     // if(location == 'in front') {
     //   $(id+"Position").html("<strong aria-live=true>The "+thing+" is "+location+of+" you.</strong>");
     // } else {
-      $(id+"Position").html("<strong>The "+thing+" is "+location+of+" you.</strong>");
+      $(id+"Position").html("<strong>The "+thing.label+" is "+location+of+" you.</strong>");
     // }
 }
 

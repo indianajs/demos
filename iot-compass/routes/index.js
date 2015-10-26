@@ -36,33 +36,39 @@ router.get('/iot2015', function(req, res) {
 // hue user: 1d004c62883d0d72b77af7e9fd46e3
 // {"devicetype":"indiana#mobile teco"}
 
-// var bridgeip = "http://192.168.1.133";
-var bridgeip = "http://129.13.169.230:8000";
+var bridgeip = "http://192.168.1.133";
+// var bridgeip = "http://129.13.169.230:8000";
 
 // Teco Hue Bridge User
-// var hueuser = "1d004c62883d0d72b77af7e9fd46e3";
-var hueuser = "newdeveloper"
+var hueuser = "1d004c62883d0d72b77af7e9fd46e3";
+// var hueuser = "newdeveloper"
 
+// Position 2: http://192.168.1.101:3000/495dd34b
+// Position 1: http://192.168.1.101:3000/17ad0b49e
 
 router.get('/iot2015/items', function(req, res) {
 	res.json( {
 	  "laptop": {
 	    location: {dir: 0},
+	    label: "laptop",
 	    img: "img/laptop.jpg",
 	  },
 	  "lamp1": {
 	    location: {dir: 180},
+	    label: "office lamp",
 	    img: "img/lamp.png",
 	  	hueid: "1",
 	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
 	  },
 	"flower": {
 	    location: {dir: 100},
+	    label: "office flower",
 	    img: "img/flower2.jpg"
 	  },
 	  "lamp2": {
 	    location: {dir: 160},
-	    img: "img/lifesignal.png",
+	    img: "img/lamp.png",
+	    label: "plant life signal",
 	    status: "danger",
 	    hueid: "2",
 	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
