@@ -67,7 +67,7 @@ router.get('/iot2015/items', function(req, res) {
 	  },
 	  "lamp2": {
 	    location: {dir: 160},
-	    img: "img/lamp.png",
+	    img: "img/flowerlamp.jpg",
 	    label: "plant life signal",
 	    status: "danger",
 	    hueid: "2",
