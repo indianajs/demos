@@ -331,7 +331,7 @@ function getIndianaData() {
 
 function initScenarioSimulations(items){
     //demo scenario simulation
-    simulateplant(items.plantLifeSignal);
+    simulateplant(items.lamp2);
 }
 
 function resetIndianaOrientation() {
