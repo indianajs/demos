@@ -274,6 +274,8 @@ function initListeners() {
     // else
     // $('#radartarget').html('No registered things in front of you');
 
+    itemUnderReticule = item;
+
     $('#mini_radar_icon').hide();
     $('#mini_radar_selection').show();
     $('#mini_radar_selection').attr('src', ''+item.value.img);
@@ -316,6 +318,7 @@ function initListeners() {
     } 
   })
 }
+
 function getIndianaData() {
   indiana.getRoomData(function(items) {
     console.log("getData -> Items", items)
@@ -397,15 +400,21 @@ function createLocationText(id, thing, location, no_of){
 // sat = saturation: 0 white - 250 full color
 // hue = hue: 0 red - 25500 green - 46920 blue - 65536 red
 
+var huestate = {};
+huestate['lamp2'] = "on";
+huestate['lamp1'] = "on";
+
 function on(id){
   //assume hue
   var item = items[id];
+  huestate[id] = "on";
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true}', "json");
 }
 
 function off(id){
   //assume hue
   var item = items[id];
+  huestate[id] = "off";
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
 }
 
@@ -433,7 +442,7 @@ function waterThePlant(id){
   //timeout make hue get red in x seconds
   // do only once !!!!
 function simulateplant(item){
-  var plantWateringTimeout = 4000;
+  var plantWateringTimeout = 30000;
   setInterval(function() {
     //should check is status of light ist already off
     // should be gradient anyways
@@ -443,7 +452,7 @@ function simulateplant(item){
 };
 
 function simulateStock(){
-
+// remove me
 }
 
 // tried a fix for users who move their phone into landscape mode
@@ -492,6 +501,9 @@ $(document).ready(function() {
     // else console.log("Browser doesn't support video capture.")
 });
 
+  var panleft = false;
+  var panright = false;
+
 function initvisuals(){
 
   $('#overviewbar').affix({
@@ -500,8 +512,43 @@ function initvisuals(){
     }
   });
 
+  var element = document.getElementById('radar');
+  var mc = new Hammer(element);
+  // hammertime.get('swipe').set({time: 1000});
+  mc.get('pan').set({direction: Hammer.DIRECTION_ALL});
+  
+  mc.on('panleft', function(ev) {
+    panleft = true;
+  });
+
+  mc.on('panright', function(ev) {
+    panright = true;
+  });
+
+  setInterval(function(){
+    if(panleft && panright){
+      toggleHueState(itemUnderReticule.key);
+      // alert("LR-Pan detected");
+       panleft = false;
+       panright = false;
+    }
+    if(panleft)
+      panleft = false;
+    if(panright)
+      panright = false;
+  }, 300);
 
 }
+
+function toggleHueState(id){
+  // alert(JSON.stringify(id) + huestate[id]);
+  if(huestate[id] == "on")
+    off(id);
+  else
+    if(huestate[id] == "off")
+      on(id);
+}
+
 
 function initDeviceMotion() {
 

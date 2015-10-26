@@ -22,6 +22,7 @@ html(lang='en')
     script(src='js/d3.v3.min.js')
     script(src='js/jsqrcode-combined.min.js')
     script(src='js/html5-qrcode.min.js')
+    script(src='js/hammer.min.js')
     //- IndianaJS is imported from the main project folder linked statically in app.js
     script(src='indiana.js')
     script(src='js/radar.js')
@@ -94,7 +95,7 @@ body.container-fluid
         div.col-xs-12.col-sm-6
           img(src="img/flowerlamp.jpg",alt='Plant Life Signal Light')
         div.description.col-xs-12.col-sm-6
-          h2(property='name') Desk Lamp
+          h2(property='name') Plant Watering Lamp
           span(property='label', content='Plant Life Signal Light')
           br
           p.postit.smallred
@@ -116,7 +117,7 @@ body.container-fluid
         div.col-xs-12.col-sm-6
           img(src='img/lamp.png' alt="Stock Indicator")
         div.description.col-xs-12.col-sm-6
-          h2(property='name') Lamp
+          h2(property='name') My Office Lamp
           p The lamp is currently in daylight mode 
           div#lampControls
             //- div(data-toggle="buttons").btn-group.button-color
@@ -152,6 +153,9 @@ body.container-fluid
         //- console.log('This device supports vibration: '+ supportsVibrate);
         //- alert(supportsVibrate);
         var intialisation = true;
+        var radarIsAvailable = false;
+        //hide all Position elements before we know if DeviceOrientationEvent is available
+        $("[id$=Position]").hide();
         $(document).ready(function(){
             // grab an element
             if (window.DeviceOrientationEvent) {
@@ -161,11 +165,14 @@ body.container-fluid
                   // alpha is the compass direction the device is facing in degrees
                   var dir = eventData.alpha;
 
-                  if(dir != null){
+                  if(dir != null || true){
                     console.log("Device says it supports DeviceOrientationEvent but does not. Not starting compass.")
                     document.getElementById('explorerheader').style.display = 'block';
                     document.getElementById('radar').style.display = 'block';
-                    document.getElementById('overviewbar').style.display = 'block';                    
+                    document.getElementById('overviewbar').style.display = 'block';  
+                    // show position texts                  
+                    $("[id$=Position]").show();
+                    radarIsAvailable = true;
                   }
                   intialisation = false;
                 }
