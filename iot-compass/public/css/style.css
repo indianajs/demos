@@ -64,11 +64,11 @@ input{
 }
 
 .thing{
-    padding-top:30px;
+    padding-top:8rem;
 }
 
 #pagecontent img{
-    border-radius: 30px; 
+    border-radius: 3rem; 
     max-width: 100%;
 }
 
