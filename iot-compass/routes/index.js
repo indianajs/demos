@@ -50,7 +50,7 @@ router.get('/iot2015/items', function(req, res) {
 	    location: {dir: 0},
 	    img: "img/laptop.jpg",
 	  },
-	  "stockIndicator": {
+	  "lamp1": {
 	    location: {dir: 180},
 	    img: "img/lamp.png",
 	  	hueid: "1",
@@ -60,7 +60,7 @@ router.get('/iot2015/items', function(req, res) {
 	    location: {dir: 100},
 	    img: "img/flower2.jpg"
 	  },
-	  "plantLifeSignal": {
+	  "lamp2": {
 	    location: {dir: 160},
 	    img: "img/lifesignal.png",
 	    status: "danger",
