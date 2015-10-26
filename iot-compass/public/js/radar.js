@@ -421,12 +421,14 @@ function off(id){
 function daymode(id){
   //assume hue
   var item = items[id];
+  $('#lightmode').text("day");
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "bri":254, "ct":160, "sat":0}', "json");
 }
 
 function nightmode(id){
   //assume hue
   var item = items[id];
+  $('#lightmode').text("night");
   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "bri":150, "ct":500}', "json");
 }
 

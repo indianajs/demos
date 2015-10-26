@@ -118,7 +118,7 @@ body.container-fluid
           img(src='img/lamp.png' alt="Stock Indicator")
         div.description.col-xs-12.col-sm-6
           h2(property='name') My Office Lamp
-          p The lamp is currently in daylight mode 
+          p The lamp is currently in <span id="lightmode">day</span>-light mode 
           div#lampControls
             //- div(data-toggle="buttons").btn-group.button-color
             div.button-color
@@ -165,7 +165,7 @@ body.container-fluid
                   // alpha is the compass direction the device is facing in degrees
                   var dir = eventData.alpha;
 
-                  if(dir != null || true){
+                  if(dir != null){
                     console.log("Device says it supports DeviceOrientationEvent but does not. Not starting compass.")
                     document.getElementById('explorerheader').style.display = 'block';
                     document.getElementById('radar').style.display = 'block';
