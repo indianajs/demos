@@ -392,6 +392,11 @@ function createLocationText(id, thing, location, no_of){
 // if(item.restAPI)
 // ajaxCall("POST", item.restAPI, '{"on":true}', "json");
 
+// from http://www.developers.meethue.com/documentation/lights-api
+// ct = color temperatur: warm 500 - cold 154
+// sat = saturation: 0 white - 250 full color
+// hue = hue: 0 red - 25500 green - 46920 blue - 65536 red
+
 function on(id){
   //assume hue
   var item = items[id];
@@ -407,13 +412,13 @@ function off(id){
 function daymode(id){
   //assume hue
   var item = items[id];
-  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":254, "ct":160}', "json");
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "bri":254, "ct":160, "sat":0}', "json");
 }
 
 function nightmode(id){
   //assume hue
   var item = items[id];
-  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":150, "ct":500}', "json");
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "bri":150, "ct":500}', "json");
 }
 
 simulatePlant = false;
