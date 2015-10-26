@@ -444,13 +444,13 @@ function waterThePlant(id){
   //timeout make hue get red in x seconds
   // do only once !!!!
 function simulateplant(item){
-  var plantWateringTimeout = 30000;
-  setInterval(function() {
-    //should check is status of light ist already off
-    // should be gradient anyways
-    ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "sat":200, "hue": 65535}', "json");
-  }
-  ,plantWateringTimeout);
+  // var plantWateringTimeout = 30000;
+  // setInterval(function() {
+  //   //should check is status of light ist already off
+  //   // should be gradient anyways
+  //   ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "sat":200, "hue": 65535}', "json");
+  // }
+  // ,plantWateringTimeout);
 };
 
 function simulateStock(){
