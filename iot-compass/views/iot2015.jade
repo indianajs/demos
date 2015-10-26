@@ -36,6 +36,8 @@ body.container-fluid
                     h2 Content
                 li
                     span.glyphicon.glyphicon-list-alt
+
+    //- IoT-Compass
     section#radar.page-section.row
         br
         p#radartarget(style="text-align: center") 
@@ -49,6 +51,8 @@ body.container-fluid
         //- button(onclick="toggleShowSelectedItem()") Toggle only show infront
         //- div#radartarget none
         //- img(src="img/Radar1.jpg")
+    
+    //- Overview Bar
     header#overviewbar(role="navigation").row.materialshadow
         h1.pull-left #{title} Page
         a(href='#explorerheader').page-scroll.pull-right 
@@ -58,25 +62,26 @@ body.container-fluid
                 li
                     span#mini_radar_icon.glyphicon.glyphicon-dashboard
                     img#mini_radar_selection
+
+    //- Content
     section#pagecontent(vocab='http://schema.org/', role='main').page-section.home
-      div#laptop(typeof='Product')
-        <img src="img/laptop.jpg" alt='Plant Life Signal Light' />
-        div.description
+
+      div#laptop.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src="img/laptop.jpg", alt='Plant Life Signal Light')
+        div.description.col-xs-6
           h2(property='name') Lenovo Laptop
           span(property='label', content='Laptop')
           span#laptopStatus(property='description')
             | Notification from Microsoft: The work laptop needs an important update!
           p#laptopPosition
 
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
+      hr
 
-      div#plantLifeSignal(typeof='Product')
-        <img src="img/lifesignal.png" alt='Plant Life Signal Light' />
-        div.description
+      div#plantLifeSignal.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src="img/lifesignal.png", alt='Plant Life Signal Light')
+        div.description.col-xs-6
           h2(property='name') Plant Life Signal
           span(property='label', content='Plant Life Signal Light')
           span#plantStatus(property='description')
@@ -87,15 +92,12 @@ body.container-fluid
                       input(name="color",itemue="btn btn-default",type="radio")
           p#plantLifeSignalPosition
 
-        div.br_to_lengthenpage
-          br
-          br
-          br
-          br
+      hr
 
-      div#flower(typeof='Product')
-        img(src='img/flower.jpg', alt='green Blume')
-        div.description   
+      div#flower.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src='img/flower.jpg', alt='green Blume')
+        div.description.col-xs-6
           h2(property='name') Office Flower     
           br
           | The wonderful 
@@ -108,16 +110,13 @@ body.container-fluid
           span Current Plant humidity 67%. 
           img.small(src="img/flower_happy.png", height="20px")   
           p#flowerPosition
+      
+      hr
 
-      div.br_to_lengthenpage
-        br
-        br
-        br
-        br
-
-      div#stockIndicator(typeof='Product')
-        img(src='img/lamp.png' alt="Stock Indicator")
-        div.description
+      div#stockIndicator.thing.row(typeof='Product')
+        div.col-xs-6
+          img(src='img/lamp.png' alt="Stock Indicator")
+        div.description.col-xs-6
           h2(property='name') Stock Indicator
           |         
           br

@@ -56,20 +56,20 @@ input{
     display: none;
 }
 
+/* CSS for fixing the overviewbar when the user scrolls, also JS controlled */
 .affix{
     position: fixed;
     top: 0;
     width:100%
 }
 
-#pagecontent>div{
-    display: flex;
+.thing{
+    padding-top:30px;
 }
 
 #pagecontent img{
-    width: 30%;
-    height: 30%;
-    border-radius: 20px;
+    border-radius: 30px; 
+    max-width: 100%;
 }
 
 div.description {
