@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang='en')
   head
     title= title
     meta(charset="utf-8")
@@ -118,10 +118,12 @@ body.container-fluid
       div#stockIndicator(typeof='Product')
         img(src='img/lamp.png' alt="Stock Indicator")
         div.description
-          h2(property='name') Lampe
+          h2(property='name') Stock Indicator
           |         
           br
-          | The curren VW Stock is: 
+          | Currently looking at the 
+          strong(property='stockname') VW 
+          | stock : 
           div#lampControls
             div(data-toggle="buttons").btn-group.button-color
                 label.btn.btn-success(href='#', onclick="on('stockIndicator')") BUY
@@ -154,27 +156,7 @@ body.container-fluid
         //- alert(supportsVibrate);
         $(document).ready(function(){
             // grab an element
-            var myElement = document.querySelector("#overviewbar");
-            // construct an instance of Headroom, passing the element
-            var headroom  = new Headroom(myElement, {
-                      "offset": 462,
-                      "tolerance": 0,
-                      "classes": {
-                        "notTop" : "fixed"
-                      },
-                      onTop : function() {
-                        document.querySelector('#pagecontent').style.paddingTop = '0px';
-                        $('#mini-radar').hide();
-                      },
-                      onNotTop : function() {
-                        height = document.querySelector('#explorerheader').offsetHeight + document.querySelector('#radar').offsetHeight;
-                        myElement.style.top = height;
-                        document.querySelector('#pagecontent').style.paddingTop = '54px';
-                        $('#mini-radar').show();
-                      console.log("Show minified Radar!" + height)}
-                    });
-            // initialise
-            headroom.init(); 
+
 
             //- init();
             //- resetOrientation();

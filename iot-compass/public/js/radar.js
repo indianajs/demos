@@ -1,7 +1,6 @@
 var orientationoffset = {tiltLR: 0, tiltFB: 0, dir: 0};
 var currentorientation = {tiltLR: 0, tiltFB: 0, dir: 0};
 
-
 function generatePattern(svgparent, size, image, id){
     svgparent.append("defs")
       .attr('aria-hidden',true)
@@ -450,7 +449,8 @@ function ajaxCall(method, url, payload, type){
   });
    
   request.fail(function( jqXHR, textStatus ) {
-    alert( "Request failed: " + textStatus );
+    console.log(JSON.stringify(textStatus));
+    // alert( "Request failed: " + textStatus );
   });
 }
 
@@ -462,11 +462,23 @@ $(document).ready(function() {
   getIndianaData();
   //initialization of the Standard text
   $('#radartarget').html("Rotate your device to explore your surroundings");
+
+  initvisuals();
+
   // initDeviceMotion();
     // if(hasGetUserMedia()) readqrcode();
     // else console.log("Browser doesn't support video capture.")
-
 });
+
+function initvisuals(){
+
+  $('#overviewbar').affix({
+    offset: {
+      top: function(){return $('#radar').outerHeight(true)}
+    }
+  });
+}
+
 function initDeviceMotion() {
 
   // Position Variables
