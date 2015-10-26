@@ -270,7 +270,7 @@ function initListeners() {
   document.addEventListener('foundItemInFront', function(item) {
     item = item.detail;
     if(item.key != 'none')
-    $('#radartarget').html('You are looking at the <a href="#'+item.key+'">'+ item.key + '</a>');
+    $('#radartarget').html('You are looking at the <a href="#'+item.key+'">'+ item.value.label + '</a>');
     // else
     // $('#radartarget').html('No registered things in front of you');
 
@@ -325,8 +325,14 @@ function getIndianaData() {
     initScenarioSimulations(items);
     setInterval(function() {
       applyLocationTextChildren(items);
+      //hack, please remove this, i'm tired right now
+      updateLocationText('plantPosition');
     }, 500)
   });
+}
+
+function updateLocationText(id){
+  $('#'+id).text(getLocationText('lamp2'));
 }
 
 function initScenarioSimulations(items){
@@ -364,14 +370,14 @@ function applyLocationTextChildren(registeredThings){
 function getLocationText(id) {
   var location = indiana.getThingCardinalPosition(id);
   switch(location) {
-    case 'N': return 'is in front of you.';
-    case 'NW': return 'is in front and to the left of you.';
-    case 'NE': return 'is in front and to the right of you.';
-    case 'SW': return 'is behind to the left of you.';
-    case 'EW': return 'is behind to the right of you.';
-    case 'S': return 'is behind you.';
-    case 'E': return 'is right of you.';
-    case 'W': return 'is left of you.';
+    case 'N': return ' in front of you.';
+    case 'NW': return ' in front and to the left of you.';
+    case 'NE': return ' in front and to the right of you.';
+    case 'SW': return ' behind to the left of you.';
+    case 'EW': return ' behind to the right of you.';
+    case 'S': return ' behind you.';
+    case 'E': return ' right of you.';
+    case 'W': return ' left of you.';
   }
 }
 function createLocationText(id, thing, location, no_of){
@@ -401,20 +407,20 @@ function off(id){
 function daymode(id){
   //assume hue
   var item = items[id];
-  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":254}', "json");
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":254, "ct":160}', "json");
 }
 
 function nightmode(id){
   //assume hue
   var item = items[id];
-  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":50}', "json");
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"bri":150, "ct":500}', "json");
 }
 
 simulatePlant = false;
 
 function waterThePlant(id){
   var item = items[id];
-  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true}', "json");
+  ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "sat":0}', "json");
 
 }
 
@@ -422,13 +428,13 @@ function waterThePlant(id){
   //timeout make hue get red in x seconds
   // do only once !!!!
 function simulateplant(item){
-  
+  var plantWateringTimeout = 4000;
   setInterval(function() {
     //should check is status of light ist already off
     // should be gradient anyways
-    ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":false}', "json");
+    ajaxCall("PUT", item.restAPI + item.hueid + '/state/', '{"on":true, "sat":200, "hue": 65535}', "json");
   }
-  ,4000);
+  ,plantWateringTimeout);
 };
 
 function simulateStock(){
@@ -489,7 +495,7 @@ function initvisuals(){
     }
   });
 
-  
+
 }
 
 function initDeviceMotion() {

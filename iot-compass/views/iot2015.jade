@@ -102,8 +102,8 @@ body.container-fluid
               br
               span Till
           br
-          p#plantStatus(property='description')
-             | The red color indicates that your plant (TODO: to your X) needs immediate attention 
+          p#lamp2Status(property='description')
+             | The red color indicates that your plant <strong id="plantPosition"></strong> needs immediate attention 
           div#lampControls
             div.button-color
                button.btn.btn-success(href='#', onclick="on('lamp2')") ON
@@ -161,7 +161,7 @@ body.container-fluid
                   // alpha is the compass direction the device is facing in degrees
                   var dir = eventData.alpha;
 
-                  if(dir != null || true){
+                  if(dir != null){
                     console.log("Device says it supports DeviceOrientationEvent but does not. Not starting compass.")
                     document.getElementById('explorerheader').style.display = 'block';
                     document.getElementById('radar').style.display = 'block';

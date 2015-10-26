@@ -46,6 +46,74 @@ var hueuser = "newdeveloper"
 // Position 2: http://192.168.1.101:3000/495dd34b
 // Position 1: http://192.168.1.101:3000/17ad0b49e
 
+router.get('/495dd34b', function(req, res) {
+  res.render('iot2015');
+});
+
+router.get('/17ad0b49e', function(req, res) {
+  res.render('iot2015');
+});
+
+router.get('/495dd34b/items', function(req, res) {
+	res.json( {
+	  "laptop": {
+	    location: {dir: 120},
+	    label: "laptop",
+	    img: "img/laptop.jpg",
+	  },
+	  "lamp1": {
+	    location: {dir: 0},
+	    label: "office lamp",
+	    img: "img/lamp.png",
+	  	hueid: "1",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
+	  },
+	"flower": {
+	    location: {dir: 100},
+	    label: "office flower",
+	    img: "img/flower2.jpg"
+	  },
+	  "lamp2": {
+	    location: {dir: 200},
+	    img: "img/flowerlamp.jpg",
+	    label: "plant life signal",
+	    status: "danger",
+	    hueid: "2",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
+	  }
+	});
+});
+
+router.get('/17ad0b49e/items', function(req, res) {
+	res.json( {
+	  "laptop": {
+	    location: {dir: 0},
+	    label: "laptop",
+	    img: "img/laptop.jpg",
+	  },
+	  "lamp1": {
+	    location: {dir: 180},
+	    label: "office lamp",
+	    img: "img/lamp.png",
+	  	hueid: "1",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
+	  },
+	"flower": {
+	    location: {dir: 100},
+	    label: "office flower",
+	    img: "img/flower2.jpg"
+	  },
+	  "lamp2": {
+	    location: {dir: 160},
+	    img: "img/flowerlamp.jpg",
+	    label: "plant life signal",
+	    status: "danger",
+	    hueid: "2",
+	    restAPI: bridgeip + "/api/" + hueuser + "/lights/"
+	  }
+	});
+});
+
 router.get('/iot2015/items', function(req, res) {
 	res.json( {
 	  "laptop": {
