@@ -1,3 +1,6 @@
 [submodule "iot-compass"]
 	path = iot-compass
 	url = https://github.com/indianajs/iot-compass.git
+[submodule "relate-gateways"]
+	path = relate-gateways
+	url = https://github.com/indianajs/relate-gateways.git

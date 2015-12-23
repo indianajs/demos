@@ -1,8 +1,12 @@
 # IndianaJS Demo Repository
 
-Install Node.JS, git clone the demo you want and have fun:
+Install Node.JS, git clone the demo and run via node:
 
-`node index.js`
+```
+git clone --recursive https://github.com/indianajs/demos.git
+cd demos
+node index.js
+```
 
 ## Hosted Demos
 
