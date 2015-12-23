@@ -1,0 +1,3 @@
+[submodule "iot-compass"]
+	path = iot-compass
+	url = https://github.com/indianajs/iot-compass.git
